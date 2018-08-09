@@ -1,0 +1,23 @@
+{
+	"root_url": "http://infolio.local",
+	"default_image": "/images/opengraph/default.jpg",
+	"default_title": "infolio",
+	"pages": {
+		"index.php": {
+			"title": {
+				"pt": null,
+				"en": null
+			},
+			"description": {
+				"pt": "Um simples portfolio.",
+				"en": "A simple portifolio."
+			},
+			"image": null,
+			"url": "/",
+			"change_freq": "monthly",
+			"priority": 0.5,
+			"subpages": null
+		}
+	}
+}
+

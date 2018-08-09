@@ -1,0 +1,214 @@
+<!-- PortaStation -->
+<script>
+var product_name = "%product_name%";
+var web_root = "%web_root%";
+var opts = %prices_json%;
+</script>
+<script type="text/javascript" src="%web_root%/js/portastation.js"></script>
+
+<div class="carousel-container container">
+	<div id="product-carousel" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#product-carousel" data-slide-to="0" class="active"></li>
+			<li data-target="#product-carousel" data-slide-to="1"></li>
+			<li data-target="#product-carousel" data-slide-to="2"></li>
+			<li data-target="#product-carousel" data-slide-to="3"></li>
+		</ol>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img class="d-block w-100" src="%web_root%/images/products/portastation/hl_artistic.jpg" alt="Station with the soldering iron">
+			</div>
+			<div class="carousel-item">
+				<img class="d-block w-100" src="%web_root%/images/products/portastation/hl_inside.jpg" alt="Inside">
+			</div>
+			<div class="carousel-item">
+				<img class="d-block w-100" src="%web_root%/images/products/portastation/hl_back.jpg" alt="Back">
+			</div>
+			<div class="carousel-item">
+				<img class="d-block w-100" src="%web_root%/images/products/portastation/hl_front.jpg" alt="Front">
+			</div>
+		</div>
+		<a class="carousel-control-prev" href="#product-carousel" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#product-carousel" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+</div>
+<br>
+
+<!-- Attractive words "banner". -->
+<div id="attractive-banner">
+	<div class="container">
+		<ul>
+			<li>
+				<div class="attract-item">
+					<i class="fas fa-battery-full icon"></i>
+					<h6>%battery_powered%</h6>
+					<p>%battery_powered_text%</p>
+				</div>
+			</li>
+			<li>
+				<div class="attract-item">
+					<i class="fas fa-suitcase icon"></i>
+					<h6>%portable%</h6>
+					<p>%portable_text%</p>
+				</div>
+			</li>
+			<li>
+				<div class="attract-item">
+					<i class="fab fa-creative-commons icon"></i>
+					<h6>%opensource%</h6>
+					<p>%opensource_text%</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="container content-title">
+	<h4>PortaStation %share_buttons%</h4>
+	<hr>
+</div>
+
+<div class="container">
+	<div class="product-pane left">
+		<!-- Description -->
+		<div class="product-content">
+			<h5>%overview%</h5>
+			%overview_text%
+		</div>
+
+		<!-- Specification table -->
+		<div class="product-content">
+			<h5>%tech_details%</h5>
+			<table>
+				<tbody>
+					<tr>
+						<td>%dimensions%</td>
+						<td>104mm x 57mm x 144mm</td>
+					</tr>
+					<tr>
+						<td>%weight%</td>
+						<td>340g</td>
+					</tr>
+					<tr>
+						<td>%vcc%</td>
+						<td>24V</td>
+					</tr>
+					<tr>
+						<td>%current_idle%</td>
+						<td>20mA</td>
+					</tr>
+					<tr>
+						<td>%current_full%</td>
+						<td>4.2A</td>
+					</tr>
+					<tr>
+						<td>%soldering_range%</td>
+						<td>220~450 &deg;C</td>
+					</tr>
+					<tr>
+						<td>%resolution%</td>
+						<td>1 &deg;C</td>
+					</tr>
+					<tr>
+						<td>%mcu%</td>
+						<td>TI MSP430G2553</td>
+					</tr>
+					<tr>
+						<td>%display%</td>
+						<td>84x48 Graphic LCD (PCD8544)</td>
+					</tr>
+					<tr>
+						<td>%soldering_iron%</td>
+						<td>Hakko 907 (24V 50W)</td>
+					</tr>
+					<tr>
+						<td>%power_connector%</td>
+						<td>2.1mm x 5.5mm Barrel Jack</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- Documentation stuff. -->
+		<div class="product-content">
+			<h5>%downloads_resources%</h5>
+			<div class="resources">
+				%docs_list%
+			</div>
+		</div>
+
+		<!-- Product options grid -->
+		<div class="product-content">
+			<h5>%options%</h5>
+			<div class="product-grid">
+				%product_grid%
+			</div>
+		</div>
+	</div>
+
+	<div class="product-pane right">
+		<div id="accordion">
+			<!-- Brazilian orders -->
+			<div class="card">
+				<div class="card-header" id="head-brazil-order">
+					<h5 class="mb-0">
+						<button class="btn btn-link" data-toggle="collapse" data-target="#collapse-brazil-order" aria-expanded="true" aria-controls="collapse-brazil-order">%br_orders%</button>
+					</h5>
+				</div>
+
+				<div id="collapse-brazil-order" class="collapse show" aria-labelledby="head-brazil-order" data-parent="#accordion">
+					<div class="card-body">
+						<h4 class="price" id="brl-price"></h4>
+						<div class="installments">%or_up_to% <b id="inst-num"></b> %of% <b id="inst-price"></b> %no_interest%</div>
+
+						<form id="opts-form">
+							<div class="form-group row config-select">
+								%opts_brl%
+							</div>
+
+							<div class="form-group row centered">
+								<div class="quantity-controller">
+									<span class="controls">
+										<a class="minus" onclick="document.getElementById('brazil-quantity').stepDown(); return false;"><i class="fas fa-minus"></i></a>
+										<input type="number" class="form-control form-control-sm quantity" id="brazil-quantity" min="1" step="1" value="1">
+										<a class="plus" onclick="document.getElementById('brazil-quantity').stepUp(); return false;"><i class="fas fa-plus"></i></a>
+									</span>
+								</div>
+							</div>
+						</form>
+
+						<script type="text/javascript" src="https://stc.%pgsand%pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+						<div class="centered"><button class="btn btn-info btn-buy" type="button" onclick="purchase()"><i class="fa fa-shopping-bag" id="brazil-basket" aria-hidden="true"></i><i class="fas fa-spinner" style="display: none;" id="brazil-spinner" aria-hidden="true"></i> %buy_pagseguro%</button></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- International orders -->
+			<div class="card">
+				<div class="card-header" id="head-int-order">
+					<h5 class="mb-0">
+						<button class="btn btn-link" data-toggle="collapse" data-target="#collapse-int-order" aria-expanded="true" aria-controls="collapse-int-order">%int_orders%</button>
+					</h5>
+				</div>
+
+				<div id="collapse-int-order" class="collapse" aria-labelledby="head-int-order" data-parent="#accordion">
+					<div class="card-body centered">
+						<div>%starting_at%</div>
+						<h4 class="price">$%starting_usd%</h4>
+						<div class="installments">%complete_unit% <b>$%fullopt_usd%</b></div>
+
+						<a class="btn btn-info btn-buy" href="https://www.tindie.com/products/11453/" role="button"><i class="fa fa-shopping-bag" aria-hidden="true"></i> %buy_tindie%</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>update_price(%max_installments%);</script>
