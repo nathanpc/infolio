@@ -5,8 +5,18 @@ class TemplateDocument {
 	private $original;
 	private $document;
 
-	function __construct($path) {
-		if (file_exists($path)) {
+	/**
+	 * Template document constructor.
+	 *
+	 * @param  string $path         Path to the template, NULL if you want to go create your own.
+	 * @param  string $initial_text Initial content if you're not loading from a file.
+	 * @return TemplateDocument     The template document object.
+	 */
+	function __construct($path, $initial_text = "") {
+		if (is_null($path)) {
+			$this->original = $initial_text;
+			$this->document = $initial_text;
+		} else if (file_exists($path)) {
 			$this->original = file_get_contents($path);
 			$this->document = $this->original;
 		} else {
@@ -24,6 +34,9 @@ class TemplateDocument {
 		$this->document = str_replace("%$key%", $str, $this->document);
 	}
 
+	/**
+	 * Converts the document back to a string.
+	 */
 	public function __toString() {
 		return $this->document;
 	}
@@ -231,6 +244,31 @@ class Template {
 		$document->replace("lang_sel_br", "%web_root%/" . str_replace("%lang_sel%", "br", $lang_url));
 		$document->replace("web_root", self::PROTOCOL . $_SERVER["SERVER_NAME"] . Config::WEBSITE_ROOT);
 
+		return $document;
+	}
+
+
+	/**
+	 * Project list template.
+	 *
+	 * @param  string $category Project category to be listed.
+	 * @param  string $lang     Language code.
+	 * @return string           Project list.
+	 */
+	public static function ProjectList($category, $lang) {
+		$document = "<div class=\"project-cat-sep\"><h4>$category</h4></div><ul class=\"project-list\">";
+
+		for ($i = 0; $i < 5; $i++) {
+			$card = new TemplateDocument($_SERVER["DOCUMENT_ROOT"] . Config::WEBSITE_ROOT . "/templates/project-card.html");
+
+			$card->replace("image", "images/products/portastation/sq_base_unit.jpg");
+			$card->replace("name", "Oiiieeeee");
+			$card->replace("description", "Some quick example text to build on the card title and make up the bulk of the card's content.");
+
+			$document .= $card->__toString();
+		}
+
+		$document .= "</ul>";
 		return $document;
 	}
 

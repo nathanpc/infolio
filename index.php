@@ -23,33 +23,16 @@ require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 	<!-- Main navbar -->
 	<div class="container navbar-container">
 		<?php echo Template::Navbar(TEXT_NAVBAR_HOME, $inter->cl); ?>
+		<br>
 	</div>
 
 	<!-- Main area. -->
-	<br>
-
-	<div class="container">
-		<div class="row">
+	<div class="container split-panel">
+		<div class="row" style="height: 100%;">
 			<!-- Projects list -->
-			<div class="col-lg-4">
+			<div class="col-lg-4" style="height: 100%;">
 				<div class="project-container">
-					<div class="project-cat-sep">
-						<h4>Category</h4>
-					</div>
-
-					<ul class="project-list">
-						<?php for ($i = 0; $i < 5; $i++) { ?>
-						<li class="project-item">
-							<div class="card">
-								<img class="card-img-top" src="images/products/portastation/sq_base_unit.jpg" alt="Card image cap">
-								<div class="card-body">
-									<h4 class="card-title">Card title</h4>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								</div>
-							</div>
-						</li>
-						<?php } ?>
-					</ul>
+					<?php echo Template::ProjectList("Testing", $inter->cl); ?>
 				</div>
 			</div>
 
@@ -63,7 +46,9 @@ require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 	</div>
 
 	<!-- Footer -->
-	<br>
-	<?php echo Template::Footer(); ?>
+	<div class="footer-container">
+		<br>
+		<?php echo Template::Footer(); ?>
+	</div>
 </body>
 </html>

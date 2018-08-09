@@ -29,6 +29,11 @@
 }
 
 /* Project List */
+.project-container {
+	height: 100%;
+	overflow-y: scroll;
+}
+
 .project-container .project-cat-sep {
 	text-align: center;
 }
