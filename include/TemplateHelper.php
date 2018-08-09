@@ -197,19 +197,13 @@ class Template {
 	 * Navbar template
 	 *
 	 * @param  string $home     Home label.
-	 * @param  string $products Products label.
-	 * @param  string $about    About label.
-	 * @param  string $contact  Contact label.
 	 * @param  string $lang     Current language.
 	 * @return string           Nice NavBar for the page.
 	 */
-	public static function Navbar($home, $products, $about, $contact, $lang) {
+	public static function Navbar($home, $lang) {
 		$document = new TemplateDocument($_SERVER["DOCUMENT_ROOT"] . Config::WEBSITE_ROOT . "/templates/navbar.html");
 
 		$document->replace("home", $home);
-		$document->replace("products", $products);
-		$document->replace("about", $about);
-		$document->replace("contact", $contact);
 
 		// Set the language for the URLs.
 		self::prepend_lang_url($document, $lang);

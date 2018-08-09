@@ -21,10 +21,46 @@ require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 </head>
 <body>
 	<!-- Main navbar -->
-	<?php echo Template::Navbar(TEXT_NAVBAR_HOME, TEXT_NAVBAR_PRODUCTS, TEXT_NAVBAR_ABOUT, TEXT_NAVBAR_CONTACT, $inter->cl); ?>
+	<div class="container navbar-container">
+		<?php echo Template::Navbar(TEXT_NAVBAR_HOME, $inter->cl); ?>
+	</div>
 
-	<!-- Highlight banners. -->
+	<!-- Main area. -->
 	<br>
+
+	<div class="container">
+		<div class="row">
+			<!-- Projects list -->
+			<div class="col-lg-4">
+				<div class="project-container">
+					<div class="project-cat-sep">
+						<h4>Category</h4>
+					</div>
+
+					<ul class="project-list">
+						<?php for ($i = 0; $i < 5; $i++) { ?>
+						<li class="project-item">
+							<div class="card">
+								<img class="card-img-top" src="images/products/portastation/sq_base_unit.jpg" alt="Card image cap">
+								<div class="card-body">
+									<h4 class="card-title">Card title</h4>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								</div>
+							</div>
+						</li>
+						<?php } ?>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Project information panel -->
+			<div class="col-lg-8">
+				<div class="project-info-panel">
+					<h1>Hello!</h1>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Footer -->
 	<br>

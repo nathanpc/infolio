@@ -1,11 +1,16 @@
 /**
  * custom.css
- * Custom CSS for the Innove Workshop website.
+ * Custom CSS for the portifolio.
  *
  * @author Nathan Campos <nathan@innoveworkshop.com>
  */
 
 /* Navbar */
+.navbar-container {
+	padding-right: 0;
+	padding-left: 0;
+}
+
 #navbar > .navbar-brand > img {
 	max-height: 30px;
 }
@@ -21,6 +26,39 @@
 	#navbar > .navbar-brand > img {
 		max-height: 64px;
 	}
+}
+
+/* Project List */
+.project-container .project-cat-sep {
+	text-align: center;
+}
+
+.project-container .project-list {
+	margin: 0;
+	padding: 0;
+}
+
+.project-container .project-list > li {
+	margin-bottom: 1em;
+	margin-right: auto;
+	margin-left: auto;
+	width: 20em;
+
+	list-style: none;
+
+	transition: margin-right 0.5s ease-in-out;
+}
+
+.project-container .project-list > li:hover {
+	margin-right: 0;
+}
+
+.project-container .project-list > li:last-child {
+	margin-bottom: 0;
+}
+
+.project-container .project-list > li > .card {
+	width: 20rem;
 }
 
 /* Banner */
