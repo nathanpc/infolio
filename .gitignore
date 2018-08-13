@@ -1,5 +1,5 @@
 # Sensitive or test files.
-config.php
+#config.php
 
 # Logs and databases.
 *.log
