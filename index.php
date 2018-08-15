@@ -31,7 +31,7 @@ require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 		<div class="row" style="height: 100%;">
 			<!-- Projects list -->
 			<div class="col-lg-4" style="height: 100%;">
-				<div class="project-container">
+				<div class="project-container custom-scrollbar">
 					<?php echo Template::ProjectList("Testing", $inter->cl); ?>
 				</div>
 			</div>
