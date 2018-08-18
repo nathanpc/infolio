@@ -10,7 +10,7 @@
  */
 window.onresize = function() {
 	// I know this looks absolutely awful, but I'm in an airplane and extremely tired, give me a break.
-	$(".split-panel").height($(window).height() - ($(".navbar-container").height() + $(".footer-container").height()));
+	$(".split-panel").height($(window).height() - ($(".navbar-container").height() + $(".footer-container").height()) - 25);
 }
 
 /**
