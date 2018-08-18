@@ -247,31 +247,6 @@ class Template {
 		return $document;
 	}
 
-
-	/**
-	 * Project list template.
-	 *
-	 * @param  string $category Project category to be listed.
-	 * @param  string $lang     Language code.
-	 * @return string           Project list.
-	 */
-	public static function ProjectList($category, $lang) {
-		$document = "<div class=\"project-cat-sep\"><h4>$category</h4></div><ul class=\"project-list\">";
-
-		for ($i = 0; $i < 5; $i++) {
-			$card = new TemplateDocument($_SERVER["DOCUMENT_ROOT"] . Config::WEBSITE_ROOT . "/templates/project-card.html");
-
-			$card->replace("image", "images/products/portastation/sq_base_unit.jpg");
-			$card->replace("name", "Oiiieeeee");
-			$card->replace("description", "Some quick example text to build on the card title and make up the bulk of the card's content.");
-
-			$document .= $card->__toString();
-		}
-
-		$document .= "</ul>";
-		return $document;
-	}
-
 	/**
 	 * Highlight banner template.
 	 *

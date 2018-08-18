@@ -27,22 +27,46 @@ require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 	</div>
 
 	<!-- Main area. -->
-	<div class="container split-panel">
-		<div class="row" style="height: 100%;">
-			<!-- Projects list -->
-			<div class="col-lg-4" style="height: 100%;">
-				<div class="project-container custom-scrollbar">
-					<?php echo Template::ProjectList("Testing", $inter->cl); ?>
-				</div>
-			</div>
-
-			<!-- Project information panel -->
-			<div class="col-lg-8">
-				<div class="project-info-panel">
-					<h1>Hello!</h1>
-				</div>
-			</div>
+	<div class="container">
+		<!-- Projects list -->
+		<div class="project-list">
+			<ul>
+				<li>
+					<b>Category 1</b>
+					<ul>
+						<li>Project 1</li>
+						<li>Project 2</li>
+						<li>Project 3</li>
+						<li>Project 4</li>
+					</ul>
+				</li>
+				<li>
+					<b>Category 2</b>
+					<ul>
+						<li>Project 1</li>
+						<li>Project 2</li>
+						<li>Project 3</li>
+						<li>Project 4</li>
+					</ul>
+				</li>
+				<li>
+					<b>Category 3</b>
+					<ul>
+						<li>Project 1</li>
+						<li>Project 2</li>
+						<li>Project 3</li>
+						<li>Project 4</li>
+					</ul>
+				</li>		
+			</ul>
+			<?php //echo Template::ProjectList("Testing", $inter->cl); ?>
 		</div>
+
+		<!-- Projects -->
+		<div class="project-container">
+			<h1>Hello!</h1>
+		</div>
+	</div>
 	</div>
 
 	<!-- Footer -->
