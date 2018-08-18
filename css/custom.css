@@ -28,6 +28,11 @@
 	}
 }
 
+/* Project Container */
+.project-container p {
+	text-align: justify;
+}
+
 /* Banner */
 .banner {
 	margin: 0;
