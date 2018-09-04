@@ -66,6 +66,13 @@ require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 		<div class="project-container container">
 			<hr>
 			<h1>PortaStation</h1>
+
+			<div class="project-highlight-line">
+				<a href="https://github.com/nathanpc/infolio"><i class="fab fa-github"></i></a>
+				<a href="https://tindie.com/"><i class="fas fa-shopping-cart"></i></a>
+				<a href="https://wordpress.com/"><i class="far fa-newspaper"></i></a>
+			</div>
+
 			<p>Uma estação de solda portátil, única no mercado, capaz de ser utilizada como uma estação primária em uma bancada de eletrônica, em um ambiente industrial de produção ou ser levada a campo para realização de instalações, reparos e manutenção.</p>
 
 			<div class="project-image-carousel container">
@@ -107,6 +114,15 @@ require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 
 					<br>
 				</div>
+			</div>
+
+			<div class="links-container">
+				<h4>Links and Resources</h4>
+
+				<ul>
+					<li><a href="http://innoveworkshop.com/en">Project Website</a></li>
+					<li><a href="http://innoveworkshop.com/en/product">Something</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>

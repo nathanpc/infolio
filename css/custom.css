@@ -29,8 +29,26 @@
 }
 
 /* Project Container */
+.project-container a {
+    color: rgb(0, 153, 188);
+}
+
+.project-container a:hover, .project-container a:active {
+	color: rgb(0, 115, 142);
+}
+
+.project-container h1 {
+	margin-bottom: 0;
+}
+
 .project-container p {
 	text-align: justify;
+}
+
+/* Project Highlight Line */
+.project-highlight-line {
+	margin-bottom: 8px;
+	font-size: 19px;
 }
 
 /* Banner */
