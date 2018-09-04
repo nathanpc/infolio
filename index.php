@@ -135,6 +135,8 @@ require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 				</ul>
 			</div>
 		</div>
+
+		<?php echo Template::Project("portastation"); ?>
 	</div>
 
 	<!-- Footer -->
