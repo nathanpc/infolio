@@ -78,13 +78,19 @@ require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 			<div class="project-image-carousel container">
 				<div class="row">
 					<div class="col">
-						<img src="images/projects/power12/show.jpg" class="img-fluid img-thumbnail">
+						<a href="images/projects/power12/show.jpg" data-toggle="lightbox" data-gallery="portastation-images">
+							<img src="images/projects/power12/show.jpg" class="img-fluid img-thumbnail">
+						</a>
 					</div>
 					<div class="col">
-						<img src="images/projects/power12/open.jpg" class="img-fluid img-thumbnail">
+						<a href="images/projects/power12/open.jpg" data-toggle="lightbox" data-gallery="portastation-images">
+							<img src="images/projects/power12/open.jpg" class="img-fluid img-thumbnail">
+						</a>
 					</div>
 					<div class="col">
-						<img src="images/projects/power12/open-connected.jpg" class="img-fluid img-thumbnail">
+						<a href="images/projects/power12/open-connected.jpg" data-toggle="lightbox" data-gallery="portastation-images">
+							<img src="images/projects/power12/open-connected.jpg" class="img-fluid img-thumbnail">
+						</a>
 					</div>
 				</div>
 
@@ -105,10 +111,14 @@ require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 				<div class="project-image-carousel container">
 					<div class="row">
 						<div class="col">
-							<img src="images/projects/power12/schematic.png" class="img-fluid img-thumbnail">
+							<a href="images/projects/power12/schematic.png" data-toggle="lightbox" data-gallery="portastation-schbrd">
+								<img src="images/projects/power12/schematic.png" class="img-fluid img-thumbnail">
+							</a>
 						</div>
 						<div class="col">
-							<img src="images/projects/power12/board.png" class="img-fluid img-thumbnail">
+							<a href="images/projects/power12/board.png" data-toggle="lightbox" data-gallery="portastation-schbrd">
+								<img src="images/projects/power12/board.png" class="img-fluid img-thumbnail">
+							</a>
 						</div>
 					</div>
 
@@ -132,5 +142,15 @@ require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 		<br>
 		<?php echo Template::Footer(); ?>
 	</div>
+
+	<script type="text/javascript">
+		$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+			event.preventDefault();
+			$(this).ekkoLightbox({
+				wrapping: false,
+				showArrows: true
+			});
+		});
+	</script>
 </body>
 </html>
