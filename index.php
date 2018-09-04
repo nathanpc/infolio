@@ -4,6 +4,7 @@ header("Content-Type: text/html; charset=utf-8");
 //require_once "config.php";
 require_once "include/TemplateHelper.php";
 require_once "include/Internationalize.php";
+require_once "include/ProjectOrganizer.php";
 
 $inter = new Internationalize();
 if (isset($_GET["lang"])) {
@@ -28,6 +29,11 @@ require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 
 	<!-- Main area. -->
 	<div class="container">
+
+<pre><?php
+$organizer = new ProjectOrganizer();
+?></pre>
+
 		<!-- Projects list -->
 		<div class="project-list">
 			<ul>
