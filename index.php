@@ -63,7 +63,7 @@ require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 		</div>
 
 		<!-- Projects -->
-		<div class="project-container">
+		<div class="project-container container">
 			<hr>
 			<h1>PortaStation</h1>
 			<p>Uma estação de solda portátil, única no mercado, capaz de ser utilizada como uma estação primária em uma bancada de eletrônica, em um ambiente industrial de produção ou ser levada a campo para realização de instalações, reparos e manutenção.</p>
