@@ -6,11 +6,15 @@ require_once "include/TemplateHelper.php";
 require_once "include/Internationalize.php";
 require_once "include/ProjectOrganizer.php";
 
+// Internationalization stuff.
 $inter = new Internationalize();
 if (isset($_GET["lang"])) {
 	$inter->set_language($_GET["lang"]);
 }
 require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
+
+// infolio project organizer.
+$organizer = new ProjectOrganizer();
 ?>
 <!DOCTYPE html>
 <html lang="<?= $inter->cl ?>">
@@ -29,11 +33,6 @@ require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 
 	<!-- Main area. -->
 	<div class="container">
-
-<pre><?php
-$organizer = new ProjectOrganizer();
-?></pre>
-
 		<!-- Projects list -->
 		<div class="project-list">
 			<ul>
@@ -69,6 +68,8 @@ $organizer = new ProjectOrganizer();
 		</div>
 
 		<!-- Projects -->
+		<?php echo Template::Project($organizer, "power12"); ?>
+		
 		<div class="project-container container">
 			<hr>
 			<h1>PortaStation</h1>
@@ -141,8 +142,6 @@ $organizer = new ProjectOrganizer();
 				</ul>
 			</div>
 		</div>
-
-		<?php echo Template::Project("portastation"); ?>
 	</div>
 
 	<!-- Footer -->

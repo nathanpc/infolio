@@ -250,15 +250,22 @@ class Template {
 	/**
 	 * Project container template.
 	 *
-	 * @param  string $name Project name.
-	 * @return string       Project container.
+	 * @param  ProjectOrganizer $organizer Project organizer object.
+	 * @param  string           $id        Project name.
+	 * @return string                      Project container.
 	 */
-	public static function Project($name) {
-		$document = new TemplateDocument($_SERVER["DOCUMENT_ROOT"] . Config::WEBSITE_ROOT . "/templates/project-container.html");
+	public static function Project($organizer, $id) {
+		if (!isset($organizer->project_list[$id])) {
+			trigger_error("Project \"$id\" not found.", E_USER_NOTICE);
+			return "<br>";
+		}
 
-		$document->replace("title", "Project Title");
+		$document = new TemplateDocument($_SERVER["DOCUMENT_ROOT"] . Config::WEBSITE_ROOT . "/templates/project-container.html");
+		$project = $organizer->project_list[$id];
+
+		$document->replace("title", $project->name);
 		$document->replace("highlight_line", '<a href="https://github.com/nathanpc/infolio"><i class="fab fa-github"></i></a><a href="https://tindie.com/"><i class="fas fa-shopping-cart"></i></a>');
-		$document->replace("brief", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh praesent tristique magna sit amet purus gravida. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo. Et tortor consequat id porta nibh venenatis cras sed felis. Faucibus nisl tincidunt eget nullam non nisi est sit.");
+		$document->replace("brief", $project->brief);
 
 		$document->replace("image_carousel",<<<'EOT'
 		<div class="row">
@@ -281,16 +288,7 @@ class Template {
 EOT
 		);
 
-		$document->replace("description", <<<'EOT'
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh praesent tristique magna sit amet purus gravida. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo. Nisl nisi scelerisque eu ultrices vitae auctor eu. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Ut ornare lectus sit amet. Elit pellentesque habitant morbi tristique. Eget sit amet tellus cras adipiscing enim eu turpis.</p>
-
-		<b>LOREM IPSUM</b>
-		<p>Libero enim sed faucibus turpis. Eget dolor morbi non arcu risus quis varius quam quisque. Habitant morbi tristique senectus et netus et. In cursus turpis massa tincidunt dui ut ornare lectus sit. Dolor sed viverra ipsum nunc. Eget arcu dictum varius duis at consectetur. Magna sit amet purus gravida quis. Nunc mattis enim ut tellus elementum sagittis vitae et leo. Aliquam ut porttitor leo a diam sollicitudin tempor id. Id velit ut tortor pretium viverra suspendisse potenti nullam. Ultricies integer quis auctor elit sed vulputate mi sit. Varius vel pharetra vel turpis nunc eget lorem dolor sed. Dignissim convallis aenean et tortor at risus viverra adipiscing. Ac tincidunt vitae semper quis lectus nulla.</p>
-
-		<b>LIBERO ENIM SED</b>
-		<p>Pharetra massa massa ultricies mi quis hendrerit. Nunc mattis enim ut tellus elementum sagittis. Massa sapien faucibus et molestie ac feugiat sed. Eget nulla facilisi etiam dignissim diam. Etiam non quam lacus suspendisse faucibus interdum posuere. Et egestas quis ipsum suspendisse ultrices gravida dictum fusce. Eros donec ac odio tempor orci dapibus ultrices in. Egestas maecenas pharetra convallis posuere morbi leo urna. Vitae nunc sed velit dignissim.</p>
-EOT
-		);
+		$document->replace("description", $project->description);
 
 		$document->replace("schbrd_carousel", <<<'EOT'
 			<div class="row">

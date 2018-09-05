@@ -85,7 +85,7 @@ class Project {
 
 class ProjectOrganizer {
 	private $project_dir;
-	private $project_list;
+	public $project_list;
 
 	/**
 	 * Constructs the project organizer class.
@@ -94,18 +94,13 @@ class ProjectOrganizer {
 		// Set projects root directory.
 		$this->project_dir = $_SERVER["DOCUMENT_ROOT"] . Config::WEBSITE_ROOT . "/projects";
 
-		// Grab the project directories.
+		// Grab the project directories and populate with project objects.
 		$this->project_list = array();
 		foreach (glob($this->project_dir . '/*', GLOB_ONLYDIR) as $project) {
 			if (!preg_match('/\.ignore$/', $project)) {
-				array_push($this->project_list, basename($project));
+				$id = basename($project);
+				$this->project_list[$id] = new Project($id, $this->project_dir);
 			}
-		}
-
-		print_r($this->project_list);
-		foreach ($this->project_list as $id) {
-			$project = new Project($id, $this->project_dir);
-			print_r($project);
 		}
 	}
 }
