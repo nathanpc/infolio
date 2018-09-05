@@ -9,7 +9,7 @@ ini_set("error_log", Config::LOG_PATH . "php.log");
 
 class Config {
 	// Paths
-	const WEBSITE_ROOT  = "";
+	const WEBSITE_ROOT  = "/infolio";
 	const LOG_PATH      = "logs/";
 
 	// Misc.

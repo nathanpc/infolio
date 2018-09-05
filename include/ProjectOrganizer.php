@@ -102,16 +102,24 @@ class Project {
 			}
 		}
 
-		foreach ($image_list as $image) {
-			// TODO: Create a new row every 3 items.
+		foreach ($image_list as $idx => $image) {
 			array_push($cols, Builder::child("div", array("class" => "col"),
 				Builder::child("a", array("href" => $image, "data-toggle" => "lightbox", "data-gallery" => implode("-", array($this->id, implode("-", (array)$category)))),
 					Builder::child("img", array("src" => $image, "class" => "img-fluid img-thumbnail"))
 				)
 			));
+
+			if (($idx + 1) % 3 == 0) {
+				$str .= Builder::root("div", array("class" => "row"), $cols)->saveHTML();
+				$str .= "<br>";
+				$cols = array();
+			}
 		}
 
-		$str .= Builder::root("div", array("class" => "row"), $cols)->saveHTML();
+		if (count($cols) > 0) {
+			$str .= Builder::root("div", array("class" => "row"), $cols)->saveHTML();
+		}
+
 		return $str;
 	}
 	
