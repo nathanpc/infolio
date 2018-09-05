@@ -57,7 +57,13 @@ class Builder {
 
 		// Append a child if there is one.
 		if (!is_null($child) && !is_string($child)) {
-			$root->appendChild($xml->importNode($child, true));
+			if (is_array($child)) {
+				foreach ($child as $cn) {
+					$root->appendChild($xml->importNode($cn, true));
+				}
+			} else {
+				$root->appendChild($xml->importNode($child, true));
+			}
 		}
 
 		// Append the root node and return it.

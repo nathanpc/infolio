@@ -271,44 +271,9 @@ class Template {
 		$document->replace("brief", $project->brief);
 		$document->replace("description", $project->description);
 		$document->replace("highlight_line", $project->highlight_line());
-
-		$document->replace("image_carousel",<<<'EOT'
-		<div class="row">
-			<div class="col">
-				<a href="images/projects/power12/show.jpg" data-toggle="lightbox" data-gallery="portastation-images">
-					<img src="images/projects/power12/show.jpg" class="img-fluid img-thumbnail">
-				</a>
-			</div>
-			<div class="col">
-				<a href="images/projects/power12/open.jpg" data-toggle="lightbox" data-gallery="portastation-images">
-					<img src="images/projects/power12/open.jpg" class="img-fluid img-thumbnail">
-				</a>
-			</div>
-			<div class="col">
-				<a href="images/projects/power12/open-connected.jpg" data-toggle="lightbox" data-gallery="portastation-images">
-					<img src="images/projects/power12/open-connected.jpg" class="img-fluid img-thumbnail">
-				</a>
-			</div>
-		</div>
-EOT
-		);
-
+		$document->replace("image_carousel", $project->image_carousel("main"));
 		
-		$document->replace("schbrd_carousel", <<<'EOT'
-			<div class="row">
-				<div class="col">
-					<a href="images/projects/power12/schematic.png" data-toggle="lightbox" data-gallery="portastation-schbrd">
-						<img src="images/projects/power12/schematic.png" class="img-fluid img-thumbnail">
-					</a>
-				</div>
-				<div class="col">
-					<a href="images/projects/power12/board.png" data-toggle="lightbox" data-gallery="portastation-schbrd">
-						<img src="images/projects/power12/board.png" class="img-fluid img-thumbnail">
-					</a>
-				</div>
-			</div>
-EOT
-		);
+		$document->replace("schbrd_carousel", $project->image_carousel(array("schematic", "board")));
 
 		$document->replace("links", $project->links_list());
 

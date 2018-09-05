@@ -71,9 +71,44 @@ class Project {
 			}
 
 			$str .= Builder::root("a", array("href" => $hl["url"]),
-				Builder::child("i", array("class" => $hl["icon"]), ""))->saveHTML();
+				Builder::child("i", array("class" => $hl["icon"]), "")
+			)->saveHTML();
 		}
 
+		return $str;
+	}
+	
+	/**
+	 * Builds a image carousel HTML.
+	 *
+	 * @param  mixed  $category Image category.
+	 * @return string           Image carousel HTML.
+	 */
+	public function image_carousel($category) {
+		$str = "";
+		$cols = array();
+		$image_list = NULL;
+
+		if (is_string($category)) {
+			$image_list = $this->images[$category];
+		} else if (is_array($category)) {
+			$image_list = $this->images[$category[0]];
+
+			for ($i = 1; $i < count($category); $i++) {
+				$image_list = array_merge($image_list, $this->images[$category[$i]]);
+			}
+		}
+
+		foreach ($image_list as $image) {
+			// TODO: Create a new row every 3 items.
+			array_push($cols, Builder::child("div", array("class" => "col"),
+				Builder::child("a", array("href" => $image, "data-toggle" => "lightbox", "data-gallery" => implode("-", array($this->id, implode("-", (array)$category)))),
+					Builder::child("img", array("src" => $image, "class" => "img-fluid img-thumbnail"))
+				)
+			));
+		}
+
+		$str .= Builder::root("div", array("class" => "row"), $cols)->saveHTML();
 		return $str;
 	}
 	
@@ -87,8 +122,8 @@ class Project {
 
 		foreach ($this->def_json["links"] as $link) {
 			$str .= Builder::root("li", NULL,
-				Builder::child("a", array("href" => $link["url"]), 
-					$link["title"]))->saveHTML();
+				Builder::child("a", array("href" => $link["url"]), $link["title"])
+			)->saveHTML();
 		}
 
 		return $str;
