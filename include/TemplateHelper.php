@@ -249,6 +249,33 @@ class Template {
 	}
 
 	/**
+	 * Project list template.
+	 *
+	 * @param  ProjectOrganizer $organizer Project organizer object.
+	 * @return string                      Project list.
+	 */
+	public static function ProjectList($organizer) {
+		$cats = array();
+
+		foreach ($organizer->categories as $cat) {
+			// bold
+			$pl = array();
+			foreach ($organizer->in_category($cat) as $project) {
+				array_push($pl, Builder::child("li", NULL, 
+					Builder::child("a", array("href" => "#" . $project->id), $project->name)
+				));
+			}
+
+			array_push($cats, Builder::child("li", NULL, array(
+				Builder::child("b", NULL, $cat),
+				Builder::child("ul", NULL, $pl)
+			)));
+		}
+
+		return Builder::root("ul", NULL, $cats)->saveHTML();
+	}
+
+	/**
 	 * Project container template.
 	 *
 	 * @param  ProjectOrganizer $organizer Project organizer object.
@@ -267,6 +294,7 @@ class Template {
 		$project = $organizer->project_list[$id];
 
 		// Simple replaces.
+		$document->replace("id", $id);
 		$document->replace("title", $project->name);
 		$document->replace("brief", $project->brief);
 		$document->replace("description", $project->description);

@@ -35,36 +35,7 @@ $organizer = new ProjectOrganizer();
 	<div class="container">
 		<!-- Projects list -->
 		<div class="project-list">
-			<ul>
-				<li>
-					<b>Category 1</b>
-					<ul>
-						<li>Project 1</li>
-						<li>Project 2</li>
-						<li>Project 3</li>
-						<li>Project 4</li>
-					</ul>
-				</li>
-				<li>
-					<b>Category 2</b>
-					<ul>
-						<li>Project 1</li>
-						<li>Project 2</li>
-						<li>Project 3</li>
-						<li>Project 4</li>
-					</ul>
-				</li>
-				<li>
-					<b>Category 3</b>
-					<ul>
-						<li>Project 1</li>
-						<li>Project 2</li>
-						<li>Project 3</li>
-						<li>Project 4</li>
-					</ul>
-				</li>		
-			</ul>
-			<?php //echo Template::ProjectList("Testing", $inter->cl); ?>
+			<?php echo Template::ProjectList($organizer); ?>
 		</div>
 
 		<!-- Projects -->
