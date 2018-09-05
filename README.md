@@ -22,17 +22,17 @@ The `project.json` definition file is a very simple file too, here's an example 
 
     {
     	"name": "Example",
-    	"category": "Audio",
-    	"brief": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh praesent tristique magna sit amet purus gravida. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo. Et tortor consequat id porta nibh venenatis cras sed felis. Faucibus nisl tincidunt eget nullam non nisi est sit.",
+    	"category": "Examples",
+    	"brief": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     	"highlights": {
-    		"github": "hello/world",
-    		"tindie": "12345"
+    	    "github": "hello/world",
+    	    "tindie": "12345"
     	},
     	"links" : [
-    		{
-    			"title": "Project Website",
-    			"url": "http://example.com/"
-    		},
+    	    {
+    	        "title": "Project Website",
+    	        "url": "http://example.com/"
+    	    },
     	]
     }
 
