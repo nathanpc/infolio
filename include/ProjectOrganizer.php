@@ -79,7 +79,7 @@ class Project {
 	 * @return string HTML description of the project.
 	 */
 	private function get_main_description() {
-		return file_get_contents($this->root . "/description.html");
+		return utf8_encode(file_get_contents($this->root . "/description.html"));
 	}
 }
 
