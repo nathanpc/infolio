@@ -272,7 +272,6 @@ class Template {
 		$document->replace("description", $project->description);
 		$document->replace("highlight_line", $project->highlight_line());
 		$document->replace("image_carousel", $project->image_carousel("main"));
-		
 		$document->replace("schbrd_carousel", $project->image_carousel(array("schematic", "board")));
 
 		$document->replace("links", $project->links_list());
