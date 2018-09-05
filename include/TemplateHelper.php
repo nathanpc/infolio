@@ -1,5 +1,6 @@
 <?php
 require_once "config.php";
+require_once "include/HTML_Builder.php";
 
 class TemplateDocument {
 	private $original;
@@ -264,7 +265,9 @@ class Template {
 		$project = $organizer->project_list[$id];
 
 		$document->replace("title", $project->name);
-		$document->replace("highlight_line", '<a href="https://github.com/nathanpc/infolio"><i class="fab fa-github"></i></a><a href="https://tindie.com/"><i class="fas fa-shopping-cart"></i></a>');
+		$document->replace("highlight_line", 
+			Builder::root("a", array("href" => "https://github.com/nathanpc/infolio"), 
+				Builder::child("i", array("class" => "fab fa-github"), ""))->saveHTML());
 		$document->replace("brief", $project->brief);
 
 		$document->replace("image_carousel",<<<'EOT'
