@@ -1,9 +1,9 @@
 {
-	"name": "Power12",
-	"category": "Audio",
+	"name": "PortaStation",
+	"category": "Equipment",
 	"brief": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh praesent tristique magna sit amet purus gravida. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo. Et tortor consequat id porta nibh venenatis cras sed felis. Faucibus nisl tincidunt eget nullam non nisi est sit.",
 	"highlights": {
-		"github": "nathanpc/Power12",
+		"github": "innoveworkshop/portastation",
 		"tindie": "11453"
 	},
 	"links" : [

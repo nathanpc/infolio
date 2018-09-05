@@ -18,6 +18,7 @@ class Project {
 	private $def_json;
 
 	public $name;
+	public $category;
 	public $brief;
 	public $description;
 	public $images;
@@ -138,6 +139,7 @@ class Project {
 			
 		$this->name = $project["name"];
 		$this->brief = $project["brief"];
+		$this->category = $project["category"];
 	}
 
 	/**
@@ -174,6 +176,7 @@ class Project {
 class ProjectOrganizer {
 	private $project_dir;
 	public $project_list;
+	public $categories;
 
 	/**
 	 * Constructs the project organizer class.
@@ -184,12 +187,35 @@ class ProjectOrganizer {
 
 		// Grab the project directories and populate with project objects.
 		$this->project_list = array();
+		$this->categories = array();
 		foreach (glob($this->project_dir . '/*', GLOB_ONLYDIR) as $project) {
 			if (!preg_match('/\.ignore$/', $project)) {
 				$id = basename($project);
 				$this->project_list[$id] = new Project($id, $this->project_dir);
+
+				if (!in_array($this->project_list[$id]->category, $this->categories)) {
+					array_push($this->categories, $this->project_list[$id]->category);
+				}
 			}
 		}
+	}
+
+	/**
+	 * Retrieves all the projects contained in that specific category.
+	 *
+	 * @param  string $cat Project category.
+	 * @return array       Projects inside that category.
+	 */
+	public function in_category($cat) {
+		$list = array();
+
+		foreach ($this->project_list as $project) {
+			if ($project->category == $cat) {
+				array_push($list, $project);
+			}
+		}
+
+		return $list;
 	}
 }
 
