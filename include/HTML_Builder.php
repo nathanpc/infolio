@@ -15,7 +15,7 @@ class Builder {
 	 * @param  mixed       $child      Child element.
 	 * @return DOMDocument             Completed node.
 	 */
-	public static function root($tag, $attributes, $child = NULL) {
+	public static function root($tag, $attributes = NULL, $child = NULL) {
 		// Create document.
 		$xml = new DOMDocument("1.0", "utf-8");
 
@@ -35,7 +35,7 @@ class Builder {
 	 * @param  mixed      $child      Child element.
 	 * @return DOMElement             Completed node.
 	 */
-	public static function child($tag, $attributes, $child = NULL) {
+	public static function child($tag, $attributes = NULL, $child = NULL) {
 		// Create document.
 		$xml = new DOMDocument("1.0", "utf-8");
 
@@ -46,11 +46,13 @@ class Builder {
 		}
 
 		// Set the root node attributes.
-		foreach ($attributes as $key => $value) {
-			$attr = $xml->createAttribute($key);
-			$attr->value = $value;
+		if (!is_null($attributes)) {
+			foreach ($attributes as $key => $value) {
+				$attr = $xml->createAttribute($key);
+				$attr->value = $value;
 
-			$root->appendChild($attr);
+				$root->appendChild($attr);
+			}
 		}
 
 		// Append a child if there is one.

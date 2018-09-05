@@ -270,7 +270,6 @@ class Template {
 		$document->replace("title", $project->name);
 		$document->replace("brief", $project->brief);
 		$document->replace("description", $project->description);
-
 		$document->replace("highlight_line", $project->highlight_line());
 
 		$document->replace("image_carousel",<<<'EOT'
@@ -311,11 +310,7 @@ EOT
 EOT
 		);
 
-		$document->replace("links", <<<EOT
-		<li><a href="http://innoveworkshop.com/en">Project Website</a></li>
-		<li><a href="http://innoveworkshop.com/en/product">Something</a></li>
-EOT
-		);
+		$document->replace("links", $project->links_list());
 
 		//self::prepend_lang_url($document, $lang);
 		$document->replace("web_root", self::PROTOCOL . $_SERVER["SERVER_NAME"] . Config::WEBSITE_ROOT);

@@ -4,6 +4,16 @@
 	"highlights": {
 		"github": "nathanpc/Power12",
 		"tindie": "11453"
-	}
+	},
+	"links" : [
+		{
+			"title": "Project Website",
+			"url": "http://innoveworkshop.com/en"
+		},
+		{
+			"title": "Test Thingy",
+			"url": "https://google.com/"
+		}
+	]
 }
 

@@ -76,6 +76,23 @@ class Project {
 
 		return $str;
 	}
+	
+	/**
+	 * Builds the links list HTML.
+	 *
+	 * @return string Links list HTML.
+	 */
+	public function links_list() {
+		$str = "";
+
+		foreach ($this->def_json["links"] as $link) {
+			$str .= Builder::root("li", NULL,
+				Builder::child("a", array("href" => $link["url"]), 
+					$link["title"]))->saveHTML();
+		}
+
+		return $str;
+	}
 
 	/**
 	 * Parses the definition file and populates the class with the contents.
