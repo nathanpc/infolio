@@ -7,6 +7,7 @@
  */
 
 require_once "config.php";
+require_once "include/HTML_Builder.php";
 
 class Project {
 	const IMAGE_FILTER = '/\.(png|jpg|jpeg|bmp|gif)$/';
@@ -14,6 +15,7 @@ class Project {
 
 	public $id;
 	public $root;
+	private $def_json;
 
 	public $name;
 	public $brief;
@@ -43,11 +45,45 @@ class Project {
 	}
 
 	/**
+	 * Builds the highlight line HTML.
+	 *
+	 * @return string Highlight line HTML.
+	 */
+	public function highlight_line() {
+		$str = "";
+
+		foreach ($this->def_json["highlights"] as $provider => $val) {
+			$hl = array(
+				"type" => $provider,
+				"icon" => "",
+				"url" => "");
+
+			// Create a simple definition for the highlight based on the provider.
+			if ($provider == "github") {
+				$hl["icon"] = "fab fa-github";
+				$hl["url"] = "http://github.com/$val";
+			} else if ($provider == "tindie") {
+				$hl["icon"] = "fas fa-shopping-cart";
+				$hl["url"] = "https://www.tindie.com/products/$val/";
+			} else if ($provider == "news") {
+				$hl["icon"] = "far fa-newspaper";
+				$hl["url"] = $val;
+			}
+
+			$str .= Builder::root("a", array("href" => $hl["url"]),
+				Builder::child("i", array("class" => $hl["icon"]), ""))->saveHTML();
+		}
+
+		return $str;
+	}
+
+	/**
 	 * Parses the definition file and populates the class with the contents.
 	 */
 	private function parse_definition() {
 		$project = json_decode(file_get_contents($this->root . "/project.json"), true);
-
+		$this->def_json = $project;
+			
 		$this->name = $project["name"];
 		$this->brief = $project["brief"];
 	}

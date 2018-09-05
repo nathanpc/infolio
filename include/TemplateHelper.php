@@ -256,19 +256,22 @@ class Template {
 	 * @return string                      Project container.
 	 */
 	public static function Project($organizer, $id) {
+		// Check if the requested project exists.
 		if (!isset($organizer->project_list[$id])) {
 			trigger_error("Project \"$id\" not found.", E_USER_NOTICE);
 			return "<br>";
 		}
 
+		// Load stuff.
 		$document = new TemplateDocument($_SERVER["DOCUMENT_ROOT"] . Config::WEBSITE_ROOT . "/templates/project-container.html");
 		$project = $organizer->project_list[$id];
 
+		// Simple replaces.
 		$document->replace("title", $project->name);
-		$document->replace("highlight_line", 
-			Builder::root("a", array("href" => "https://github.com/nathanpc/infolio"), 
-				Builder::child("i", array("class" => "fab fa-github"), ""))->saveHTML());
 		$document->replace("brief", $project->brief);
+		$document->replace("description", $project->description);
+
+		$document->replace("highlight_line", $project->highlight_line());
 
 		$document->replace("image_carousel",<<<'EOT'
 		<div class="row">
@@ -291,8 +294,7 @@ class Template {
 EOT
 		);
 
-		$document->replace("description", $project->description);
-
+		
 		$document->replace("schbrd_carousel", <<<'EOT'
 			<div class="row">
 				<div class="col">
