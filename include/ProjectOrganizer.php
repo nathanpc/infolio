@@ -15,6 +15,7 @@ class Project {
 
 	public $id;
 	public $root;
+	public $lang;
 	private $def_json;
 
 	public $name;
@@ -29,8 +30,9 @@ class Project {
 	 * @param string $id   Project ID.
 	 * @param string $root Project root directory.
 	 */
-	function __construct($id, $root = NULL) {
+	function __construct($id, $lang, $root = NULL) {
 		$this->id = $id;
+		$this->lang = $lang;
 
 		// Populate the class if the project exists.
 		if (!is_null($root)) {
@@ -134,7 +136,8 @@ class Project {
 	 * Parses the definition file and populates the class with the contents.
 	 */
 	private function parse_definition() {
-		$project = json_decode(file_get_contents($this->root . "/project.json"), true);
+		$project = json_decode(file_get_contents($this->root . "/project." .
+			$this->lang . ".json"), true);
 		$this->def_json = $project;
 			
 		$this->name = $project["name"];
@@ -169,7 +172,8 @@ class Project {
 	 * @return string HTML description of the project.
 	 */
 	private function get_main_description() {
-		return utf8_encode(file_get_contents($this->root . "/description.html"));
+		return utf8_encode(file_get_contents($this->root . "/description." .
+			$this->lang . ".html"));
 	}
 }
 
@@ -180,8 +184,10 @@ class ProjectOrganizer {
 
 	/**
 	 * Constructs the project organizer class.
+	 *
+	 * @param string $lang Language code.
 	 */
-	function __construct() {
+	function __construct($lang) {
 		// Set projects root directory.
 		$this->project_dir = $_SERVER["DOCUMENT_ROOT"] . Config::WEBSITE_ROOT . "/projects";
 
@@ -191,7 +197,7 @@ class ProjectOrganizer {
 		foreach (glob($this->project_dir . '/*', GLOB_ONLYDIR) as $project) {
 			if (!preg_match('/\.ignore$/', $project)) {
 				$id = basename($project);
-				$this->project_list[$id] = new Project($id, $this->project_dir);
+				$this->project_list[$id] = new Project($id, $lang, $this->project_dir);
 
 				if (!in_array($this->project_list[$id]->category, $this->categories)) {
 					array_push($this->categories, $this->project_list[$id]->category);

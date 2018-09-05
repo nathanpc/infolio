@@ -293,15 +293,27 @@ class Template {
 		$document = new TemplateDocument($_SERVER["DOCUMENT_ROOT"] . Config::WEBSITE_ROOT . "/templates/project-container.html");
 		$project = $organizer->project_list[$id];
 
-		// Simple replaces.
+		// Title stuff.
 		$document->replace("id", $id);
 		$document->replace("title", $project->name);
+		if ($project->lang == "en") {
+			$document->replace("schbrd_title", "Schematic and Board");
+			$document->replace("links_title", "Links and Resources");
+		} else if ($project->lang == "pt") {
+			$document->replace("schbrd_title", "Diagrama e Placa do Circuito");
+			$document->replace("links_title", "Links e Referências");
+		}
+
+		// Descriptions.
+		$document->replace("highlight_line", $project->highlight_line());
 		$document->replace("brief", $project->brief);
 		$document->replace("description", $project->description);
-		$document->replace("highlight_line", $project->highlight_line());
+
+		// Images.
 		$document->replace("image_carousel", $project->image_carousel("main"));
 		$document->replace("schbrd_carousel", $project->image_carousel(array("schematic", "board")));
 
+		// Links.
 		$document->replace("links", $project->links_list());
 
 		//self::prepend_lang_url($document, $lang);

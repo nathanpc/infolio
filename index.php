@@ -14,7 +14,7 @@ if (isset($_GET["lang"])) {
 require_once $inter->get_lang_include($_SERVER["PHP_SELF"]);
 
 // infolio project organizer.
-$organizer = new ProjectOrganizer();
+$organizer = new ProjectOrganizer($inter->cl);
 ?>
 <!DOCTYPE html>
 <html lang="<?= $inter->cl ?>">

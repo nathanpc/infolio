@@ -13,8 +13,8 @@ To keep things as simple as possible the project library uses a simple file stru
 		      - `board/` PCB images.
 			  - `schematic/` Schematic images.
 			  - `misc/` Miscellaneous images that will be added in the description.
-          - `description.html` Description of the project.
-		  - `project.json` Project description file.
+          - `description[.lang].html` Description of the project.
+		  - `project[.lang].json` Project description file.
 
 ### Project Definition
 
